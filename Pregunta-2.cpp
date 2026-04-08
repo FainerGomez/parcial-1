@@ -1,5 +1,5 @@
 /* Cifrar y Descifrar mensajes, segun el desplazamiento de letras
-* vector char codificacionDecodificacion: contiene todas las letras del abecedario, minusculas 
+* vector char codificacion Decodificacion: contiene todas las letras del abecedario, minusculas 
 * como mayusculas
 * metodo cifrarMensaje que debe, segun el desplazamiento, cifrar el mensaje
 * metodo descifrarMensaje que debe, segun el desplazamiento, descifrar el mensaje
@@ -13,6 +13,7 @@
 * Valor 1, si solo funciona un solo metodo
 * Valor 0, sino funciona ninguno de los dos
 */
+//Deus miserere animae meae, nescio quid hic egi
 
 #include<iostream>
 #include<conio.h>
@@ -26,15 +27,62 @@ char codificacionDecodificacion[] = {
         'b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v','w','x','y','z'
 };
 
-// Función para cifrar un mensaje utilizando el cifrado César
+// Función para cifrar un me123aje utili08zando el cifrado César
 void cifrarMensaje(char* m, int desplazamiento,char* code) {
+	
+	   char* p = m;
+
+    while(*p != '\0'){
+
+        char* buscar = code;
+        int pos = 0;
+
+        while(*(buscar + pos) != *p){
+            pos++;
+        }
+
+        pos = pos + desplazamiento;
+
+        int tam = strlen(code);
+        pos = pos % tam;
+
+        *p = *(code + pos);
+
+        p++;
+    }
+
+    cout << "Mensaje cifrado: " << m;
 
 }
 
-// Función para descifrar un mensaje utilizando el cifrado César
+
 void descifrarMensaje(char* m, int desplazamiento, char* code) {
 
+   char* p = m;
 
+    while(*p != '\0'){
+
+        char* buscar = code;
+        int pos = 0;
+
+        while(*(buscar + pos) != *p){
+            pos++;
+        }
+
+        pos = pos - desplazamiento;
+
+        int tam = strlen(code);
+
+        if(pos <= 0){
+            pos = tam + pos;
+        }
+
+        *p = *(code + pos);
+
+        
+
+}
+cout << "Mensaje descifrado: " << m;
 }
 
 int main() {
